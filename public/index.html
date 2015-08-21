@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An app to follow the daily activities">
+    <meta name="author" content="XIE Qianyue">
+    <title>Line</title>
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.css " rel="stylesheet" />
+    <base href="/">
+</head>
+
+<body ng-app="lineApp">
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">Line</a>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/localTodo">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="view-container">
+            <div ng-view class="view-frame"></div>
+        </div>
+    </div>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/scripts/app-angular.js"></script>
+    <script src="/scripts/services/todoService.js"></script>
+    <script src="/scripts/controllers/todoController.js"></script>
+    <script src="/scripts/controllers/mongoTodoController.js"></script>
+</body>
+
+</html>
