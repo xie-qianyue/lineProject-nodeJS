@@ -3,5 +3,5 @@
 app.controller('lineController', function ($scope, $filter) {
     'use strict';
 
-    var today = moment().format();
+    this.today = moment().format();
 });
