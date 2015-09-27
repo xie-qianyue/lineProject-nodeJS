@@ -2,6 +2,7 @@
 
 app
   .factory('Auth', function Auth($location, $rootScope, Session, User, $cookies) {
+    
     $rootScope.currentUser = $cookies.get('user') || null;
     $cookies.remove('user');
 
