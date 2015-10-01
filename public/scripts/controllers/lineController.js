@@ -1,7 +1,8 @@
+'use strict';
+
 // Implicit Annotation
 // Careful: If you plan to minify your code, your service names will get renamed and break your app.
 app.controller('lineController', function ($scope, $filter, lineService) {
-    'use strict';
 
     var line = this;   
 
