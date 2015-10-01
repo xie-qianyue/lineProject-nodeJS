@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
-	'url' : process.env.MONGOLAB_URI || 'mongodb://localhost'
+	'url' : process.env.MONGOLAB_URI || 'mongodb://localhost/line'
 }
