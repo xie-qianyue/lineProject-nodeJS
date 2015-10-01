@@ -2,17 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var api = express.Router();
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost');
-
-// Define the shcema.
-var todoSchema = new mongoose.Schema({
-	title: String,
-	completed: Boolean
-});
-
-// Define model with a pre-exist collection 'todo'.
-var Todo = mongoose.model('Todo', todoSchema, 'todo');
-
+/*
 api.get('/todos', function (req, res) {
 	Todo.find(function(err, todos) {
 		if(err){
@@ -87,5 +77,6 @@ api.put('/todos/completed', function(req, res) {
 			}
 		});
 });
+*/
 
 module.exports = api;
