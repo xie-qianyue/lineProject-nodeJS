@@ -4,10 +4,17 @@ var express = require('express');
 var auth = express.Router();
 var passport = require('./../config/passport.js');
 
-// user api
-auth.post('/local/users', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // redirect to the secure profile section
-        failureRedirect : '/signup', // redirect back to the signup page if there is an error
+// sign up API with local strategy : /local/user
+auth.post('/local/user', passport.authenticate('local-signup', {
+        successRedirect : '/', // redirect to the secure profile section
+        failureRedirect : '/user', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
+
+// login API with local stragtegy : /local/login
+auth.post('/local/login', passport.authenticate('local-login', {
+        successRedirect : '/', // redirect to the secure profile section
+        failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
 
