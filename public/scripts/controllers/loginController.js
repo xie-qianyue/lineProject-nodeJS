@@ -1,11 +1,13 @@
 'use strict';
 
-app.controller('LoginCtrl', function ($scope, Auth, $location) {
+app.controller('loginCtrl', function ($scope, Auth, $location) {
   $scope.error = {};
   $scope.user = {};
 
   $scope.login = function(form) {
-    Auth.login('password', {
+    // Auth.login('provider', {
+    // without provider
+    Auth.login({  
       'email': $scope.user.email,
       'password': $scope.user.password
     },
