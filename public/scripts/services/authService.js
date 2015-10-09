@@ -1,28 +1,39 @@
 'use strict';
 
 app
-  .factory('Auth', function Auth($location, $rootScope, Session, User, $cookies) {
+  .factory('Auth', function Auth($location, $rootScope, Session, User, $cookies, $http) {
     
     $rootScope.currentUser = $cookies.get('user') || null;
     $cookies.remove('user');
 
     return {
 
-      login: function(provider, user, callback) {
+      // login: function(provider, user, callback) {
+      // without provider
+      login: function(user, callback) {
         // angular.noop : A function that performs no operations. 
         // This function can be useful when writing code in the functional style.
         var cb = callback || angular.noop;
-        Session.save({
-          provider: provider,
-          email: user.email,
-          password: user.password,
-          rememberMe: user.rememberMe
-        }, function(user) {
-          $rootScope.currentUser = user;
-          return cb();
-        }, function(err) {
-          return cb(err.data);
-        });
+        // Session.save({
+        //   provider: provider,
+        //   email: user.email,
+        //   password: user.password,
+        //   rememberMe: user.rememberMe
+        // }, function(user) {
+        //   $rootScope.currentUser = user;
+        //   return cb();
+        // }, function(err) {
+        //   return cb(err.data);
+        // });
+        $http.post('/auth/local/login', user)
+          .success(function(data) {
+              return cb();
+          })
+          .error(function(error) {
+              msg = error.message;
+              //error = error.error ? error.error : error;
+              //$flash.show(error.message || error);
+          });
       },
 
       logout: function(callback) {
