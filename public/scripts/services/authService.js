@@ -10,29 +10,15 @@ app
 
       // login: function(provider, user, callback) {
       // without provider
-      login: function(user, callback) {
-        // angular.noop : A function that performs no operations. 
-        // This function can be useful when writing code in the functional style.
-        var cb = callback || angular.noop;
-        // Session.save({
-        //   provider: provider,
-        //   email: user.email,
-        //   password: user.password,
-        //   rememberMe: user.rememberMe
-        // }, function(user) {
-        //   $rootScope.currentUser = user;
-        //   return cb();
-        // }, function(err) {
-        //   return cb(err.data);
-        // });
+      login: function(user) {
         $http.post('/auth/local/login', user)
           .success(function(data) {
-              return cb();
+              $rootScope.message = 'Authentication successful!';
+              $location.url('/');
           })
           .error(function(error) {
-              msg = error.message;
-              //error = error.error ? error.error : error;
-              //$flash.show(error.message || error);
+              $rootScope.message = error;
+              $location.url('/login');
           });
       },
 
