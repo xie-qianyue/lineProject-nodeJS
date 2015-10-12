@@ -30,7 +30,7 @@ auth.post('/local/login', function (req, res, next) {
       if (err) { 
       	return next(err); 
       }
-      return res.redirect('/users/' + user.username);
+      return res.send(user.local.email);
     });
   })(req, res, next);
 });

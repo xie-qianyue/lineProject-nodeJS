@@ -1,10 +1,9 @@
 'use strict';
 
 app
-  .factory('Auth', function Auth($location, $rootScope, Session, User, $cookies, $http) {
+  .factory('Auth', function Auth($location, $rootScope, Session, User, $http) {
     
-    $rootScope.currentUser = $cookies.get('user') || null;
-    $cookies.remove('user');
+    $rootScope.currentUser = null;
 
     return {
 
@@ -14,6 +13,7 @@ app
         $http.post('/auth/local/login', user)
           .success(function(data) {
               $rootScope.message = 'Authentication successful!';
+              $rootScope.currentUser = data;
               $location.url('/');
           })
           .error(function(error) {

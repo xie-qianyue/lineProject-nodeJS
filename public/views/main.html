@@ -1,5 +1,8 @@
 <div id="lineapp">
-	<header></header>
+	<header>
+		<h3 ng-show="!currentUser">Welcome. Please <a href="/login">log in</a>.</h2>
+        <h3 ng-show="currentUser">Hello {{currentUser}}</h2>
+	</header>
 	<section>
 		<div>
 			<label>today is {{lineCtrl.today}}</label>			
