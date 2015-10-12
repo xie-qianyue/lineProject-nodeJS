@@ -21,3 +21,7 @@ gulp.task('styles', function(){
 		//.pipe(cssFilter)
 		.pipe(gulp.dest(cssDest));
 });
+
+gulp.task('all', function() { 
+	gulp.start('bower-js', 'styles'); 
+});
