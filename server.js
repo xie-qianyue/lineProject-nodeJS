@@ -1,4 +1,4 @@
-// set up server ============================================================
+// set up server
 var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-// set up express ============================================================
+// set up express
 var app = module.exports = express(); // make it easy to test
 var port = process.env.PORT || 3000
 app.set('port', port);

@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('loginCtrl', function ($scope, Auth, $location) {
-  $scope.error = {};
-  $scope.user = {};
+app.controller('loginCtrl', function ($scope, Auth, $rootScope) {
+
+	$rootScope.message = "";
 
   $scope.login = function() {
     // without provider
