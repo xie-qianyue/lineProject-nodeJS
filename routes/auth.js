@@ -11,9 +11,8 @@ auth.post('/local/user', passport.authenticate('local-signup', function(err, use
 
 }));
 
-// login API with local stragtegy : /local/login
+// login API with local stragtegy : /local/login with a costom callback
 // connect to the done(err, user, info) in passport.js
-// custom callback
 auth.post('/local/login', function (req, res, next) {
   passport.authenticate('local-login', function (err, user, info) {
     
@@ -25,12 +24,12 @@ auth.post('/local/login', function (req, res, next) {
     	return res.status(401).send(info.loginMessage);
     }
 
-    // return res.send(user.id);
     req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
       
+      // TODO : we can change the return user info
       res.send(user.local.email);
     });
   })(req, res, next);
@@ -39,9 +38,10 @@ auth.post('/local/login', function (req, res, next) {
 auth.get('/loggedin', authConfig.ensureAuthenticated, function (req, res) {
 	debugger;
 	if(req.user) {
-		return true;
-	} 
-	return false;
+		res.status(200).send(true);
+	} else {
+    res.status(500).send('error:req.user is null');
+  }
 });
 
 auth.post('/logout', authConfig.logout);

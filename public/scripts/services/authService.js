@@ -30,6 +30,9 @@ app
             $cookies.remove('currentUser');
             $rootScope.currentUser = null;
           })
+          .error(function(error) {
+            // TODO
+          })
       },
 
       createUser: function(userinfo, callback) {
@@ -44,21 +47,25 @@ app
           });
       },
 
-      loggedin: function() {
+      checkLoggedin: function() {
         /*
         Session.get(function(user) {
           $rootScope.currentUser = user;
         });
         */
         $http.get('/auth/loggedin')
-          .success(function(loggedin) {
-            // save current user
+          .success(function(loggedin) {            
             if(loggedin) {
+              // if logged in, save currentUser
               $rootScope.currentUser = $cookies.get('currentUser');
             } else {
               $rootScope.currentUser = null;
             }
             
+          })
+          .error(function(error) {
+            // TODO
+            console.log(error);
           });
       },
 
