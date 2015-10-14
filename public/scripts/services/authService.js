@@ -1,7 +1,7 @@
 'use strict';
 
 app
-  .factory('Auth', function Auth($location, $rootScope, Session, User, $http) {
+  .factory('Auth', function Auth($location, $rootScope, Session, User, $http, $cookies) {
     
     $rootScope.currentUser = null;
 
@@ -13,6 +13,7 @@ app
         $http.post('/auth/local/login', user)
           .success(function(data) {
               $rootScope.message = 'Authentication successful!';
+              $cookies.put('currentUser', data);
               $rootScope.currentUser = data;
               $location.url('/');
           })
@@ -22,15 +23,13 @@ app
           });
       },
 
-      logout: function(callback) {
-        var cb = callback || angular.noop;
-        Session.delete(function(res) {
+      logout: function() {
+        $http.post('/auth/logout')
+          .success(function(data) {
+            $rootScope.message = 'Logout successful!';
+            $cookies.remove('currentUser');
             $rootScope.currentUser = null;
-            return cb();
-          },
-          function(err) {
-            return cb(err.data);
-          });
+          })
       },
 
       createUser: function(userinfo, callback) {
@@ -45,10 +44,22 @@ app
           });
       },
 
-      currentUser: function() {
+      loggedin: function() {
+        /*
         Session.get(function(user) {
           $rootScope.currentUser = user;
         });
+        */
+        $http.get('/auth/loggedin')
+          .success(function(loggedin) {
+            // save current user
+            if(loggedin) {
+              $rootScope.currentUser = $cookies.get('currentUser');
+            } else {
+              $rootScope.currentUser = null;
+            }
+            
+          });
       },
 
       changePassword: function(email, oldPassword, newPassword, callback) {
