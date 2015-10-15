@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-beautify": "^2.0.0",
     "gulp-filter": "^3.0.1",
     "main-bower-files": "^2.9.0"
   }

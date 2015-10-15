@@ -19,13 +19,17 @@ var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
 
 app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: true
+})); // for parsing application/x-www-form-urlencoded
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser());
 app.use(express.static('public')); // serve the static files
 
 // required for passport
-app.use(session({secret:'line'}));
+app.use(session({
+    secret: 'line'
+}));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages by passport
@@ -44,6 +48,6 @@ if ('development' == app.get('env')) {
     app.use(errorHandler());
 }
 
-app.listen(app.get('port'), function () {
+app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });

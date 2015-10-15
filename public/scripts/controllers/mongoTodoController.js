@@ -69,13 +69,13 @@
 //             return;
 //         }
 //         todoList.saveEvent = event;
-        
+
 //         if (todoList.reverted) {
 //             // Todo edits were reverted-- don't save.
 //             todoList.reverted = null;
 //             return;
 //         }
-        
+
 //         todo.title = todo.title.trim();
 //         if (todo.title === todoList.originalTodo.title) {
 //             todoList.editedTodo = null;

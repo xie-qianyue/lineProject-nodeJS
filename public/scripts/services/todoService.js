@@ -12,7 +12,7 @@
 
 // 	// Return a promise object.
 // 	function getTodo(){
-		
+
 // 		var def = $q.defer();
 
 // 		$http.get('/api/todos')

@@ -1,14 +1,14 @@
 'use strict';
 
-app.controller('loginCtrl', function ($scope, Auth, $rootScope) {
+app.controller('loginCtrl', function($scope, Auth, $rootScope) {
 
-	$rootScope.message = "";
+    $rootScope.message = "";
 
-  $scope.login = function() {
-    // without provider
-    Auth.login({  
-      'email': $scope.user.email,
-      'password': $scope.user.password
-    });
-  };
+    $scope.login = function() {
+        // without provider
+        Auth.login({
+            'email': $scope.user.email,
+            'password': $scope.user.password
+        });
+    };
 });

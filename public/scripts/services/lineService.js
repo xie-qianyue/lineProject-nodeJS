@@ -1,20 +1,20 @@
-app.factory('lineService', ['$http', '$q', function($http, $q){
-	'use strict';
+app.factory('lineService', ['$http', '$q', function($http, $q) {
+    'use strict';
 
-	// service interface
-	var service = {
-		addActivity: addActivity,
-		getActivities: getActivities
-	};
+    // service interface
+    var service = {
+        addActivity: addActivity,
+        getActivities: getActivities
+    };
 
-	function addActivity(newActivity){
-		console.log(newActivity);
-	}
+    function addActivity(newActivity) {
+        console.log(newActivity);
+    }
 
-	function getActivities(){
-		
-	}
+    function getActivities() {
 
-	return service;
+    }
+
+    return service;
 
 }]);

@@ -20,16 +20,16 @@ app
             .when('/about', {
                 templateUrl: '/views/about.html'
             })
-        /*
-        .when('/localTodo', {
-            templateUrl: '/views/todo.html',            
-            controllerAs: 'todoCtrl',
-            controller: 'todoController'
-        })*/
-        .when('/login', {
-            templateUrl: '/views/login.html',
-            controller: 'loginCtrl'
-        })
+            /*
+            .when('/localTodo', {
+                templateUrl: '/views/todo.html',            
+                controllerAs: 'todoCtrl',
+                controller: 'todoController'
+            })*/
+            .when('/login', {
+                templateUrl: '/views/login.html',
+                controller: 'loginCtrl'
+            })
             .when('/signup', {
                 templateUrl: '/views/signup.html',
                 controller: 'signupCtrl'
