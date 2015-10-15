@@ -9,6 +9,8 @@ var authConfig = require('./../config/authConfig.js');
 // connect to the done(err, user, msg) in passport.js
 auth.post('/local/user', passport.authenticate('local-signup', function(err, user, msg) {
 
+    // TODO
+    
 }));
 
 // login API with local stragtegy : /local/login with a costom callback

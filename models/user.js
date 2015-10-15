@@ -24,5 +24,9 @@ userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 }
 
+userSchema.static('findByEmail', funciton(email, callback){
+	return this.find({local.email:email}, callback);
+})
+
 // create the model for users and expose it to passport.js
 module.exports = mongoose.model('User', userSchema);

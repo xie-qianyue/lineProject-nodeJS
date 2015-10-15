@@ -1,6 +1,19 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var api = express.Router();
+var actvity = require('./../models/activity.js');
+var User = require('../models/user');
+
+api.post('/addActivity'), function (req, res) {
+
+	var userActivity = req.body.newActivity;
+	var userId = User.findByEmail(activity.userEmail, function(err, user){
+		var newActvity = new actvity();
+		// TODO
+	})
+
+	
+});
 
 /*
 api.get('/todos', function (req, res) {

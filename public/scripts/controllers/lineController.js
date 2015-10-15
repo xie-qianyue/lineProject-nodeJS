@@ -2,7 +2,7 @@
 
 // Implicit Annotation
 // Careful: If you plan to minify your code, your service names will get renamed and break your app.
-app.controller('lineController', function($scope, $filter, lineService) {
+app.controller('lineController', function($scope, $filter, lineService, $rootScope) {
 
     var line = this;
 
@@ -17,7 +17,8 @@ app.controller('lineController', function($scope, $filter, lineService) {
 
     line.addActivity = function() {
         var newActivity = {
-            name: line.activityName
+            name: line.activityName,
+            userEmail: $rootScope.currentUser
         }
 
         if (line.objectName != null) {
