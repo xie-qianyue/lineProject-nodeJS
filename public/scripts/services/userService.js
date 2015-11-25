@@ -2,7 +2,7 @@
 
 app
     .factory('User', function($resource) {
-        return $resource('/auth/local/user/:id/', {}, {
+        return $resource('/auth/local/user/:id/', null, {
             'update': {
                 method: 'PUT'
             }
