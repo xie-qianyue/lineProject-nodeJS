@@ -32,6 +32,6 @@ gulp.task('beautify-js', function() {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('all', function() {
+gulp.task('moveall', function() {
     gulp.start('movejs', 'movecss');
 });
