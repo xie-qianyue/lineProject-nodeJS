@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 
 // Define the shcema.
-var activitySchema = new mongoose.Schema({
+var activitySchema = mongoose.Schema({
 	user_id: String,
     name: String,
     start_at: Date,
