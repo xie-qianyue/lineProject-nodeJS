@@ -1,19 +1,19 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var api = express.Router();
-var actvity = require('./../models/activity');
+var Actvity = require('./../models/activity');
 var User = require('../models/user');
 
 api.post('/addActivity', function (req, res) {
 
 	var userActivity = req.body;
 
-	User.find({'local.email' : userActivity.userEmail}, function(err, user){
+	User.findOne({'local.email' : userActivity.userEmail}, function(err, user){
 		if(err) {
 			res.statut(500).send('Error DB : cant find user.')
 		}
 
-		var newActvity = new actvity();
+		var newActvity = new Actvity();
 		newActvity.user_id = user._id;
 		newActvity.name = userActivity.name;
 		newActvity.start_at = new Date();
@@ -29,14 +29,16 @@ api.post('/addActivity', function (req, res) {
 });
 
 api.get('/getActivities', function(req, res) {
+	
+	var userActivity = req.body;
 
-	User.find({'local.email' : userActivity.userEmail}, function(err, user){
+	User.findOne({'local.email' : userActivity.userEmail}, function(err, user){
 
 		if(err) {
 			res.statut(500).send('Error DB : cant find user.')
 		}
 
-		actvity.find({'user_id' : user._id}, function(err, activities){
+		Actvity.find({'user_id' : user._id}, function(err, activities){
 			if(err) {
 				res.statut(500).send('Error DB : cant find activities');
 			}
