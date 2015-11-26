@@ -2,7 +2,6 @@ var app = angular.module('lineApp', [
     'ngRoute',
     'ngCookies',
     'ngResource'
-    //,'http-auth-interceptor'
 ]);
 
 app

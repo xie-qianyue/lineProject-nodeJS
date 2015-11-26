@@ -43,8 +43,9 @@ passport.use('local-signup', new LocalStrategy({
                 'local.email': email
             }, function(err, user) {
                 // if there are any errors, return the error
-                if (err)
+                if (err) {
                     return done(err);
+                }
 
                 // check to see if theres already a user with that email
                 if (user) {

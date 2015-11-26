@@ -3,7 +3,7 @@ var gulpFilter = require('gulp-filter');
 var mainBowerFiles = require('main-bower-files');
 var beautify = require('gulp-beautify');
 
-gulp.task('bower-js', function() {
+gulp.task('movejs', function() {
 
     var jsFilter = gulpFilter('*.js');
     var jsDest = './public/scripts/externe';
@@ -13,10 +13,10 @@ gulp.task('bower-js', function() {
         .pipe(gulp.dest(jsDest));
 });
 
-gulp.task('styles', function() {
+gulp.task('movecss', function() {
 
     // var cssFilter = gulpFilter('*.css');
-    var cssDest = './public/css'
+    var cssDest = './public/css/externe'
 
     return gulp.src(['./bower_components/bootstrap/dist/css/bootstrap.css'])
         //.pipe(cssFilter)
@@ -33,5 +33,5 @@ gulp.task('beautify-js', function() {
 });
 
 gulp.task('all', function() {
-    gulp.start('beautify-js', 'bower-js', 'styles');
+    gulp.start('movejs', 'movecss');
 });

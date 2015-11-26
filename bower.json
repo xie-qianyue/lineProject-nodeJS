@@ -20,7 +20,6 @@
     "bootstrap": "~3.3.5",
     "angular-route": "~1.4.4",
     "moment": "~2.10.6",
-    "angular-http-auth": "~1.2.2",
     "angular-cookies": "~1.4.5",
     "angular-resource": "~1.4.5"
   }

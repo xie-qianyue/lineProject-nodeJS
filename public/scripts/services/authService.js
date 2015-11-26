@@ -7,54 +7,55 @@ app
 
         return {
             login: function(user) {
-                $http.post('/auth/local/login', user)
-                    .success(function(data) {
+                $http.post('/auth/local/login', user).then(
+                    function(res) {
                         $rootScope.message = 'Authentication successful!';
-                        $cookies.put('currentUser', data);
-                        $rootScope.currentUser = data;
+                        $cookies.put('currentUser', res.data.userEmail);
+                        $rootScope.currentUser = res.data.userEmail;
                         $location.url('/');
-                    })
-                    .error(function(error) {
-                        $rootScope.message = error;
+                    },
+                    function(error) {
+                        $rootScope.message = error.data;
                         $location.url('/login');
                     });
             },
 
             logout: function() {
-                $http.post('/auth/logout')
-                    .success(function(data) {
+                $http.post('/auth/logout').then(
+                    function() {
                         $rootScope.message = 'Logout successful!';
                         $cookies.remove('currentUser');
                         $rootScope.currentUser = null;
-                    })
-                    .error(function(error) {
+                    },
+                    function(error) {
                         // TODO
-                    })
+                    });
             },
 
-            createUser: function(userinfo) {
-                User.save(userinfo,
-                    function(user) {
-                        $rootScope.currentUser = user;
-                        return cb();
+            createUser: function(user) {
+                 $http.post('/auth/local/user', user).then(
+                    function(res) {
+                        $cookies.put('currentUser', res.data.userEmail);
+                        $rootScope.currentUser = res.data.userEmail;
+                        $location.url('/');
                     },
-                    function(err) {
-                        return cb(err.data);
+                    function(error) {
+                        $rootScope.message = error.data;
+                        $location.url('/signup');
                     });
             },
 
             checkLoggedin: function() {
-                $http.get('/auth/loggedin')
-                    .success(function(loggedin) {
+                $http.get('/auth/loggedin').then(
+                    function(loggedin) {
                         if (loggedin) {
                             // if logged in, save currentUser
                             $rootScope.currentUser = $cookies.get('currentUser');
                         } else {
                             $rootScope.currentUser = null;
                         }
-
-                    })
-                    .error(function(error) {
+                    },
+                    function(error) {
                         // TODO
                         console.log(error);
                     });
