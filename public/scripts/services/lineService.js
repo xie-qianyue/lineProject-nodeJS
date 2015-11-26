@@ -8,15 +8,14 @@ app.factory('lineService', ['$http', '$q', function($http, $q) {
     };
 
     function addActivity(newActivity) {
-        console.log(newActivity);
 
         var def = $q.defer();
 
         $http.post('/api/addActivity', newActivity)
-            .success(function(data){
-                def.resolve(data);
-            })
-            .error(function(err){
+            .then(function(res){
+                def.resolve(res.data);
+            },
+            function(err){
                 // TODO
                 console.log('Error : ' + err);
                 def.reject('Failed to add activity');
@@ -27,6 +26,19 @@ app.factory('lineService', ['$http', '$q', function($http, $q) {
 
     function getActivities() {
 
+    	var def = $q.defer();
+
+    	$http.get('/api/getActivities')
+    		.then(function(res){
+    			def.resolve(res.data);
+    		},
+    		function(err){
+    			// TODO
+                console.log('Error : ' + err);
+                def.reject('Failed to get activities');
+    		});
+
+    	return def.promise;
     }
 
     return service;
