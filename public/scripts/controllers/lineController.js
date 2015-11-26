@@ -25,7 +25,18 @@ app.controller('lineController', function($scope, $filter, lineService, $rootSco
             newActivity['object'] = line.objectName;
         }
 
-        lineService.addActivity(newActivity);
+        lineService.addActivity(newActivity)
+            .then(function(data) {
+                // TODO : add object
+                var activityAdded = {
+                    name : data.name
+                };
+                line.activities.push(activityAdded);                
+            },
+            function(err) {
+                // TODO
+                console.log('Error : ' + err);
+            });
     }
 
 
