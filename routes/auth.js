@@ -53,7 +53,6 @@ auth.post('/local/login', function(req, res, next) {
 });
 
 auth.get('/loggedin', authConfig.ensureAuthenticated, function(req, res) {
-    debugger;
     if (req.user) {
         res.status(200).send(true);
     } else {
