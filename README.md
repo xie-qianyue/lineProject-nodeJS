@@ -1,5 +1,5 @@
 # lineProject-nodeJS
-An app to follow the daily activities
+An app to follow the daily activities.
 
 ## Notes
 Use passportjs for authentication in Node.  
