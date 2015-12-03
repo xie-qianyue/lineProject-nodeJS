@@ -60,7 +60,7 @@ app
                         console.log(error);
                     });
             },
-
+            // not supported yet
             changePassword: function(email, oldPassword, newPassword, callback) {
                 var cb = callback || angular.noop;
                 User.update({
@@ -74,7 +74,7 @@ app
                     return cb(err.data);
                 });
             },
-
+            // not supported yet
             removeUser: function(email, password, callback) {
                 var cb = callback || angular.noop;
                 User.delete({
