@@ -30,9 +30,7 @@ api.post('/addActivity', function (req, res) {
 
 api.get('/getActivities', function(req, res) {
 	
-	var userActivity = req.body;
-
-	User.findOne({'local.email' : userActivity.userEmail}, function(err, user){
+	User.findOne({'local.email' : req.user.local.email}, function(err, user){
 
 		if(err) {
 			res.statut(500).send('Error DB : cant find user.')

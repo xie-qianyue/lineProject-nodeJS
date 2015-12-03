@@ -1,4 +1,4 @@
-app.factory('lineService', ['$http', '$q', function($http, $q) {
+app.factory('lineService', ['$http', '$q', function($http, $q, $rootScope) {
     'use strict';
 
     // service interface

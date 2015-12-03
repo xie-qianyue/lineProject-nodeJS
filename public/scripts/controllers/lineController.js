@@ -7,13 +7,26 @@ app.controller('lineController', function($scope, $filter, lineService, $rootSco
     var line = this;
 
     line.today = moment().format();
-
-    line.activities = [{
+    
+    line.activities = []; 
+    
+    lineService.getActivities()
+        .then(function(data){
+            if(data.length != 0){
+                line.activities.push(data);    
+            }            
+        },
+        function(err){
+            console.log('Error : ' + err);
+        });
+    
+    // for test
+    line.activities.push({
         name: 'reading',
         object: 'Hamlet'
     }, {
         name: 'jogging'
-    }]
+    });
 
     line.addActivity = function() {
         var newActivity = {
