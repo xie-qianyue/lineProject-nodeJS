@@ -40,7 +40,6 @@ app.controller('lineController', function($scope, $filter, lineService, $rootSco
 
         lineService.addActivity(newActivity)
             .then(function(data) {
-                // TODO : add object
                 var activityAdded = {
                     name : data.name
                 };
@@ -51,6 +50,4 @@ app.controller('lineController', function($scope, $filter, lineService, $rootSco
                 console.log('Error : ' + err);
             });
     }
-
-
 });
