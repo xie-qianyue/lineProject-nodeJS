@@ -9,5 +9,8 @@ Use passportjs for authentication in Node.
 * Install the server resources : `npm install`
 * Move the resouces : `gulp moveall`
 
+## Start Server
+`node server`
+
  
 
